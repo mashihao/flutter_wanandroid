@@ -33,6 +33,7 @@ class SplashPageState extends State<SplashPage> {
 
   void _init() {
     _loadSplashData();
+    //判断 是走  欢迎界面 还是走 引导界面
     Observable.just(1).delay(new Duration(milliseconds: 500)).listen((_) {
 //      SpUtil.putBool(Constant.key_guide, false);
       if (SpUtil.getBool(Constant.key_guide, defValue: true) &&
@@ -120,6 +121,7 @@ class SplashPageState extends State<SplashPage> {
     }
   }
 
+  //加载环境 界面 广告界面
   void _initSplash() {
     if (_splashModel == null) {
       _goMain();
@@ -145,6 +147,7 @@ class SplashPageState extends State<SplashPage> {
     _timerUtil.startCountDown();
   }
 
+  //跳转到主界面
   void _goMain() {
     RouteUtil.goMain(context);
   }

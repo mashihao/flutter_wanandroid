@@ -77,6 +77,7 @@ class _MainLeftPageState extends State<MainLeftPage> {
 
   @override
   Widget build(BuildContext context) {
+    //判断是否登录，选择是否添加登出模块
     if (Util.isLogin()) {
       if (!_pageInfo.contains(loginOut)) {
         _pageInfo.add(loginOut);
@@ -95,6 +96,18 @@ class _MainLeftPageState extends State<MainLeftPage> {
     return new Scaffold(
       body: new Column(
         children: <Widget>[
+          new Container(
+            height:120,
+            padding: EdgeInsets.only(
+                top: ScreenUtil.getInstance().statusBarHeight, left: 10.0),
+            color: Colors.blue,
+            child:
+            new Text("123",
+              style: new TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold),),
+          ),
           new Container(
             height: 166.0,
             color: Theme.of(context).primaryColor,
