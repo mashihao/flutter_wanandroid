@@ -45,6 +45,7 @@ class LikeBtn extends StatelessWidget {
       },
       child: new Icon(
         Icons.favorite,
+        //判断是否喜欢  且 登录
         color: (isLike == true && Util.isLogin())
             ? Colors.redAccent
             : Colours.gray_99,

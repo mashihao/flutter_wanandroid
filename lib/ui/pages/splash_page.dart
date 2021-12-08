@@ -35,7 +35,8 @@ class SplashPageState extends State<SplashPage> {
     _loadSplashData();
     //判断 是走  欢迎界面 还是走 引导界面
     Observable.just(1).delay(new Duration(milliseconds: 500)).listen((_) {
-//      SpUtil.putBool(Constant.key_guide, false);
+     SpUtil.putBool(Constant.key_guide, false);
+      _initBanner();
       if (SpUtil.getBool(Constant.key_guide, defValue: true) &&
           ObjectUtil.isNotEmpty(_guideList)) {
         SpUtil.putBool(Constant.key_guide, false);
@@ -77,6 +78,7 @@ class SplashPageState extends State<SplashPage> {
   void _initBannerData() {
     for (int i = 0, length = _guideList.length; i < length; i++) {
       if (i == length - 1) {
+        //最后一个， 添加按钮
         _bannerList.add(new Stack(
           children: <Widget>[
             new Image.asset(
@@ -111,6 +113,7 @@ class SplashPageState extends State<SplashPage> {
           ],
         ));
       } else {
+        //如果不是最后一个，只添加图片
         _bannerList.add(new Image.asset(
           _guideList[i],
           fit: BoxFit.fill,

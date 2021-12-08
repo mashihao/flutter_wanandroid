@@ -21,22 +21,24 @@ class ArticleItem extends StatelessWidget {
             title: model.title, url: model.link, isHome: isHome);
       },
       child: new Container(
-          padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 10),
+          padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 16),
           child: new Row(
             children: <Widget>[
               new Expanded(
                   child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      //标题
                       new Text(
                         model.title,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyles.listTitle,
                       ),
+                      //添加间距
                       Gaps.vGap10,
                       new Text(
-                        model.desc,
+                        "描述",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyles.listContent,
@@ -44,17 +46,20 @@ class ArticleItem extends StatelessWidget {
                       Gaps.vGap5,
                       new Row(
                         children: <Widget>[
+                          //喜欢按钮
                           new LikeBtn(
                             labelId: labelId,
                             id: model.originId ?? model.id,
                             isLike: model.collect,
                           ),
                           Gaps.hGap10,
+                          //作者
                           new Text(
                             model.author,
                             style: TextStyles.listExtra,
                           ),
                           Gaps.hGap10,
+                          //时间
                           new Text(
                             Utils.getTimeLine(context, model.publishTime),
                             style: TextStyles.listExtra,
@@ -69,6 +74,7 @@ class ArticleItem extends StatelessWidget {
                 child: new CircleAvatar(
                   radius: 28.0,
                   backgroundColor:
+                  //通过不同字段获取不同颜色
                   Utils.getCircleBg(model.superChapterName ?? "公众号"),
                   child: new Padding(
                     padding: EdgeInsets.all(5.0),

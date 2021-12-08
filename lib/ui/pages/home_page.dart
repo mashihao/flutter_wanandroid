@@ -4,25 +4,31 @@ import 'package:flutter_wanandroid/ui/pages/rec_hot_page.dart';
 
 bool isHomeInit = true;
 
+// 主页
 class HomePage extends StatelessWidget {
   const HomePage({Key key, this.labelId}) : super(key: key);
 
   final String labelId;
 
+  //创建banner图片
   Widget buildBanner(BuildContext context, List<BannerModel> list) {
+    //如果没有图片，不显示
     if (ObjectUtil.isEmpty(list)) {
       return new Container(height: 0.0);
     }
     return new AspectRatio(
+      // 
       aspectRatio: 16.0 / 9.0,
       child: Swiper(
         indicatorAlignment: AlignmentDirectional.topEnd,
         circular: true,
         interval: const Duration(seconds: 5),
+        //右上角 1/3
         indicator: NumberSwiperIndicator(),
         children: list.map((model) {
           return new InkWell(
             onTap: () {
+              //跳转到其他界面
               LogUtil.e("BannerModel: " + model.toString());
               NavigatorUtil.pushWeb(context,
                   title: model.title, url: model.url);
@@ -77,15 +83,18 @@ class HomePage extends StatelessWidget {
       );
     }).toList();
     List<Widget> children = new List();
+    //添加头部
     children.add(new HeaderItem(
       titleColor: Colors.green,
       leftIcon: Icons.library_books,
+      //推荐公众号
       titleId: Ids.recWxArticle,
       onTap: () {
         NavigatorUtil.pushTabPage(context,
             labelId: Ids.titleWxArticleTree, titleId: Ids.titleWxArticleTree);
       },
     ));
+    //添加children 
     children.addAll(_children);
     return new Column(
       mainAxisSize: MainAxisSize.min,
@@ -175,6 +184,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
+//右上角  1/3
 class NumberSwiperIndicator extends SwiperIndicator {
   @override
   Widget build(BuildContext context, int index, int itemCount) {

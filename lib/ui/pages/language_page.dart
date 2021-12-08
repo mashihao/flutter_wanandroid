@@ -25,7 +25,7 @@ class _LanguagePageState extends State<LanguagePage> {
 
     _currentLanguage =
         SpUtil.getObj(Constant.keyLanguage, (v) => LanguageModel.fromJson(v));
-    ;
+    
     if (ObjectUtil.isEmpty(_currentLanguage)) {
       _currentLanguage = _list[0];
     }
@@ -88,6 +88,7 @@ class _LanguagePageState extends State<LanguagePage> {
                         languageCode: 'zh', countryCode: 'CH')),
                 style: new TextStyle(fontSize: 13.0),
               ),
+              //尾部
               trailing: new Radio(
                   value: true,
                   groupValue: model.isSelected == true,

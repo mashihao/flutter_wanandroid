@@ -56,18 +56,20 @@ class HeaderItem extends StatelessWidget {
             children: <Widget>[
               new Text(
                 extra ?? IntlUtil.getString(context, extraId),
-                style: TextStyle(color: Colors.grey, fontSize: 14),
+                style: TextStyle(color: Colors.red, fontSize: 14),
               ),
               new Icon(
                 rightIcon ?? Icons.keyboard_arrow_right,
-                color: Colors.grey,
+                color: Colors.red,
               ),
             ],
           )),
+          //装饰
       decoration: new BoxDecoration(
           //new Border.all(width: 0.33, color: Colours.divider)
+          //底部线条
           border: new Border(
-              bottom: new BorderSide(width: 0.33, color: Colours.divider))),
+              bottom: new BorderSide(width: 0.33, color: Colors.red))),
     );
   }
 }
